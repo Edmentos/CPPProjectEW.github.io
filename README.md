@@ -31,6 +31,18 @@ Step 2 - Expand Start Node
 The algorithm explores neighbouring tiles
 moving to a tile that is closest to the G(oal) while doing a calculation based off of the best possible move and the energy calculation is done 
 
+Step 3 - Expand the Next Node
+The algorithm searches for the best candidate node and explores its neightbours
+The energy calculation is done and it gathers its new energy and updates nodes expanded
+
+Step 4-Continue Exploring
+The Algorithm continues expanding nodes and searching for possible paths while keeping in mind the best estimated distance to the goal 
+Eventually it reaches the G(oal)
+
+Step 5 - Path Reconstruction
+Once the goal is reached and the algorithm has enough energy the algorithm traces back through the parent nodes and builds a map of what path it took
+The path is then printed to the grid using *s as a path 
+
 ## File Structure
 
 ## Setup and Run
