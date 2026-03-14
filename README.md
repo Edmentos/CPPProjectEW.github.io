@@ -43,11 +43,75 @@ Step 5 - Path Reconstruction
 Once the goal is reached and the algorithm has enough energy the algorithm traces back through the parent nodes and builds a map of what path it took
 The path is then printed to the grid using *s as a path 
 
+
+![Maps](Maps.png)
+
+You can see clearly reconstructed path at the end with the *s adn the steps it took along with the final ending energy nodes expanded and the acid tiles it ran through
+
 ## File Structure
 
+```text
+CPPProjEW/
+│
+├── src/
+│   ├── main.cpp
+│   ├── AStar.cpp
+│   └── Grid.cpp
+│
+├── include/
+│   ├── AStar.h
+│   ├── Grid.h
+│   └── Position.h
+│
+├── maps/
+│   ├── map1.txt
+│   ├── map2.txt
+│   └── map3.txt
+│
+├── CPPProjEW.vcxproj
+├── CPPProjEW.vcxproj.filters
+└── x64/
+```
+
 ## Setup and Run
+### Requirements
+- Windows
+- Visual Studio 2022 (or a compatible version)
+- C++ Desktop Development workload installed
+
+### Setup
+
+1. Clone or download this repository.
+2. Open the project in Visual Studio by opening the file `CPPProjEW.vcxproj`.
+3. Ensure the build configuration is set to **x64**.
+
+### Build and Run
+
+1. Clean the project to remove any previous build files.  
+   Build → Clean Solution
+
+2. Build the project.  
+   Build → Build Solution
+
+3. Run the program.  
+   Debug → Start Without Debugging
+
+### Program Execution
+
+When the program runs it will:
+
+1. Load the map files (`map1.txt`, `map2.txt`, `map3.txt`)
+2. Display the original grid
+3. Run the energy-aware A* pathfinding algorithm
+4. Print the solved grid with the discovered path marked using `*`
+5. Output statistics including:
+   - number of steps
+   - final remaining energy
+   - nodes expanded
+   - acid tiles used
 
 ## Sample Maps
+The programe comes preloaded with 3 maps of decent quality you can make some maps yourself but if you didnt want to then here are some sample maps for you to try
 
 ## Results
 
