@@ -111,10 +111,111 @@ When the program runs it will:
    - acid tiles used
 
 ## Sample Maps
-The programe comes preloaded with 3 maps of decent quality you can make some maps yourself but if you didnt want to then here are some sample maps for you to try
+The programme comes preloaded with 3 maps of decent quality you can make some maps yourself but if you didnt want to then here are some sample maps for you to try
+
+### Map 1 – Simple Straight Path
+
+```text
+S . . . .
+. . . . .
+. . . . .
+. . . . .
+. . . . G
+```
+
+### Map 2 – Wall Navigation
+
+```text
+S . . . .
+# # # . #
+. . . . #
+. # # # #
+. . . . G
+```
+
+### Map 3 – Energy Pickup Required
+
+```text
+S . A A A
+. . 3 . .
+# # # . #
+. . . . .
+. . . . G
+```
+
+### Map 4 – Acid Shortcut Tradeoff
+
+```text
+S . . . .
+. A A A .
+. . . A .
+. A . . .
+. . . . G
+```
+
+### Map 5 – Multiple Energy Choices
+
+```text
+S . . . .
+. 2 # 3 .
+. . # . .
+. 3 . 2 .
+. . . . G
+```
+
+### Map 6 –  Energy Maze (10×10)
+
+```text
+S . . # . . A . . .
+. # . # . 2 . . # .
+. # . . . # . . # .
+. . # # . # . A . .
+# . . . . . . # . .
+. . # A # . . # . .
+. 3 . . # . # . . .
+. # # . . . # . # .
+. . . # A . . . 2 .
+. # . . . # . . . G
+```
 
 ## Results
+The programme was tested using several sample maps containing walls energy pickups and acid tiles
+For each map the algorithm loads the grid runms the A* search algorithm that is energy aware and prints both the solved path and the performance statistics
+When a valid path is found the programme prints the grid with the path marked using *s 
+
+After solving each map the programme outputs several statistics describbing the search for the best path
+- Steps taken to reach the goal
+- Final energy after completing the map
+- Nodes expanded which is how many states the algorithm explored while searching
+- Acid tiles used which is the number of A(cid) tiles stepped on as a result of the final path
+
+These results help evaluate the algorithm and make sure that it runs the right path.
+for example maps containing more acid tiles or obstacles require the path to explore more nodes before finding the best path for the map
+In some cases it will choose a slightly longer path to preserve enough energy to reach the goal
+
+Overall i found the results to be quite good it is aware of the starting energy it has and keeps that in mind as it runs through the game.
+The output data is very self explanitory and it shows good insight into the algorithm.
 
 ## Lessons Learned
+Developing this project provided practical experience implementing a search algorithm in C++
+One of the key lessons learned was how the A* algorithm keeps in mind exploaration and efficiency when searching for optimal path. Because i added the energy system into the search state we got to seehow it works when more constraints are introduced
 
-## Future Improvements
+Another important lesson learned was the importance of seperating different parts of the program into seperate files 
+The main programme logic was implemented in seperate files this made the programme easir to understand maintain and debug
+
+Working with inputting files was also a valuable to learning because I feel like in industry you will be adding a lot of files for different games and adding them in this gave me that experience
+The maps in the program are stored in text files and allowed me for working on diffrent scenarios without modifying code
+
+The project also highlighted thee importance of debugging and testing when implementing algorithm. Observing different stats like number of nodes expanded and the final energy remaining helped me make sure that the algorithm was running correctly.
+
+## Challenges Encountered
+During development several challenges were encountered while implementing the program
+
+One of the problems I faced involved loading the maps into the program. Initially i had dificulty locating the map files when I ran the build.
+This was resolved by improving the way i loaded the files into the build I searched all the directories ensuring the the build was able to see the maps.
+
+Another challenge involved changing my C++ version my project required me to use the <filesystem> library to locate the map files This feature is available in C++17 so the porject configuration needed to be updated to compile using the other version of C++
+
+Implementing the energy based system also introduced complexity. In a normal a* search the state only contains the position of the agnet in this project it also included the remaining energy meaning that the same grid position could represent multiple different states depending on the energy level. This increased the search space and required careful tracking of previously visited states to avoid unnecessary exploration
+
+These challenges helped reinforce the importance of careful debugging, incremental development and testing different scenarios to ensure the algorithm behaved as expected
