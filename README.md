@@ -3,9 +3,9 @@
 ## Overview
 My A* Project is a little game that you can play with the algorithm given a map file for it to work with it will try find the best path to the end with an energy cost in mind. Each tile you move reduces your energy by 1 and you can gain energy in the map by the +2 and +3 tiles. The algorithm knows it cannot end with a negative energy so you must make a map that will work or you will be given an error. Example maps are below
 ## Features
-This project features an A* algorithm with more that just a heuristic cost of making a move compared to another it needs to understand that it has an energy aswell and that energy is used to move around the board     
+This project features an A* algorithm with more that just a heuristic cost of making a move compared to another it needs to understand that it has an energy as well and that energy is used to move around the board     
 
-Maps are respresented as a grid of tiles loaded from .txt files       
+Maps are represented as a grid of tiles loaded from .txt files       
 
 The maps have multiple different tiles that affect movement or energy  
 - '#' = Wall  
@@ -20,7 +20,7 @@ After solving a map data is given back to the user like
 - Nodes expanded  
 - Acid Tiles used
 
-The project can also handle multiple maps at one time aswell  
+The project can also handle multiple maps at one time as well  
 
 ## How It Works
 Step 1 - Start Node  
@@ -32,7 +32,7 @@ The algorithm explores neighbouring tiles
 moving to a tile that is closest to the G(oal) while doing a calculation based off of the best possible move and the energy calculation is done 
 
 Step 3 - Expand the Next Node
-The algorithm searches for the best candidate node and explores its neightbours
+The algorithm searches for the best candidate node and explores its neighbours
 The energy calculation is done and it gathers its new energy and updates nodes expanded
 
 Step 4-Continue Exploring
@@ -46,7 +46,7 @@ The path is then printed to the grid using *s as a path
 
 ![Maps](Maps.png)
 
-You can see clearly reconstructed path at the end with the *s adn the steps it took along with the final ending energy nodes expanded and the acid tiles it ran through
+You can see clearly reconstructed path at the end with the stars and the steps it took along with the final ending energy nodes expanded and the acid tiles it ran through
 
 ## File Structure
 
@@ -111,7 +111,7 @@ When the program runs it will:
    - acid tiles used
 
 ## Sample Maps
-The programme comes preloaded with 3 maps of decent quality you can make some maps yourself but if you didnt want to then here are some sample maps for you to try
+The programme comes preloaded with 3 maps of decent quality you can make some maps yourself but if you didn’t want to then here are some sample maps for you to try
 
 ### Map 1 – Simple Straight Path
 
@@ -143,7 +143,7 @@ S . A A A
 . . . . G
 ```
 
-### Map 4 – Acid Shortcut Tradeoff
+### Map 4 – Acid Shortcut Trade-off
 
 ```text
 S . . . .
@@ -180,10 +180,10 @@ S . . # . . A . . .
 
 ## Results
 The programme was tested using several sample maps containing walls energy pickups and acid tiles
-For each map the algorithm loads the grid runms the A* search algorithm that is energy aware and prints both the solved path and the performance statistics
+For each map the algorithm loads the grid runs the A* search algorithm that is energy aware and prints both the solved path and the performance statistics
 When a valid path is found the programme prints the grid with the path marked using *s 
 
-After solving each map the programme outputs several statistics describbing the search for the best path
+After solving each map the programme outputs several statistics describing the search for the best path
 - Steps taken to reach the goal
 - Final energy after completing the map
 - Nodes expanded which is how many states the algorithm explored while searching
@@ -193,31 +193,31 @@ These results help evaluate the algorithm and make sure that it runs the right p
 for example maps containing more acid tiles or obstacles require the path to explore more nodes before finding the best path for the map
 In some cases it will choose a slightly longer path to preserve enough energy to reach the goal
 
-Overall i found the results to be quite good it is aware of the starting energy it has and keeps that in mind as it runs through the game.
-The output data is very self explanitory and it shows good insight into the algorithm.
+Overall I found the results to be quite good it is aware of the starting energy it has and keeps that in mind as it runs through the game.
+The output data is very self explanatory and it shows good insight into the algorithm.
 
 ## Lessons Learned
 Developing this project provided practical experience implementing a search algorithm in C++
-One of the key lessons learned was how the A* algorithm keeps in mind exploaration and efficiency when searching for optimal path. Because i added the energy system into the search state we got to seehow it works when more constraints are introduced
+One of the key lessons learned was how the A* algorithm keeps in mind exploration and efficiency when searching for optimal path. Because I added the energy system into the search state we got to see how it works when more constraints are introduced
 
-Another important lesson learned was the importance of seperating different parts of the program into seperate files 
-The main programme logic was implemented in seperate files this made the programme easir to understand maintain and debug
+Another important lesson learned was the importance of separating different parts of the program into separate files 
+The main programme logic was implemented in separate files this made the programme easier to understand maintain and debug
 
 Working with inputting files was also a valuable to learning because I feel like in industry you will be adding a lot of files for different games and adding them in this gave me that experience
-The maps in the program are stored in text files and allowed me for working on diffrent scenarios without modifying code
+The maps in the program are stored in text files and allowed me for working on different scenarios without modifying code
 
 The project also highlighted thee importance of debugging and testing when implementing algorithm. Observing different stats like number of nodes expanded and the final energy remaining helped me make sure that the algorithm was running correctly.
 
 ## Challenges Encountered
 During development several challenges were encountered while implementing the program
 
-One of the problems I faced involved loading the maps into the program. Initially i had dificulty locating the map files when I ran the build.
-This was resolved by improving the way i loaded the files into the build I searched all the directories ensuring the the build was able to see the maps.
+One of the problems I faced involved loading the maps into the program. Initially I had difficulty locating the map files when I ran the build.
+This was resolved by improving the way I loaded the files into the build I searched all the directories ensuring the build was able to see the maps.
 
 ![gettingMaps](gettingMaps.png)
 
-Another challenge involved changing my C++ version my project required me to use the <filesystem> library to locate the map files This feature is available in C++17 so the porject configuration needed to be updated to compile using the other version of C++
+Another challenge involved changing my C++ version my project required me to use the <filesystem> library to locate the map files This feature is available in C++17 so the project configuration needed to be updated to compile using the other version of C++
 
-Implementing the energy based system also introduced complexity. In a normal a* search the state only contains the position of the agnet in this project it also included the remaining energy meaning that the same grid position could represent multiple different states depending on the energy level. This increased the search space and required careful tracking of previously visited states to avoid unnecessary exploration
+Implementing the energy based system also introduced complexity. In a normal a* search the state only contains the position of the agent in this project it also included the remaining energy meaning that the same grid position could represent multiple different states depending on the energy level. This increased the search space and required careful tracking of previously visited states to avoid unnecessary exploration
 
 These challenges helped reinforce the importance of careful debugging, incremental development and testing different scenarios to ensure the algorithm behaved as expected
