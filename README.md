@@ -214,6 +214,8 @@ During development several challenges were encountered while implementing the pr
 One of the problems I faced involved loading the maps into the program. Initially i had dificulty locating the map files when I ran the build.
 This was resolved by improving the way i loaded the files into the build I searched all the directories ensuring the the build was able to see the maps.
 
+![gettingMaps](gettingMaps.png)
+
 Another challenge involved changing my C++ version my project required me to use the <filesystem> library to locate the map files This feature is available in C++17 so the porject configuration needed to be updated to compile using the other version of C++
 
 Implementing the energy based system also introduced complexity. In a normal a* search the state only contains the position of the agnet in this project it also included the remaining energy meaning that the same grid position could represent multiple different states depending on the energy level. This increased the search space and required careful tracking of previously visited states to avoid unnecessary exploration
